@@ -1,7 +1,6 @@
-/* 
-  Note: Tailwind directives are handled by the CDN in index.html for preview.
-  When building for production via Vite, PostCSS will handle styled.
-*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
