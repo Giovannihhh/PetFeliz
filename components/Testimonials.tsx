@@ -10,12 +10,12 @@ const Testimonials: React.FC = () => {
   const prev = () => setCurrentIndex((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="py-16 lg:py-24 bg-white relative overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
           
           {/* Left: Image/Graphic */}
-          <div className="flex-1 w-full relative">
+          <div className="flex-1 w-full relative order-2 lg:order-1">
             <motion.div 
                initial={{ scale: 0.9, opacity: 0 }}
                whileInView={{ scale: 1, opacity: 1 }}
@@ -28,7 +28,7 @@ const Testimonials: React.FC = () => {
                  alt="Happy Pet" 
                  className="relative z-10 rounded-3xl object-cover w-full h-full shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500"
                />
-               <div className="absolute -bottom-8 -right-8 bg-white p-6 rounded-2xl shadow-xl z-20 max-w-xs">
+               <div className="absolute -bottom-6 -right-6 lg:-bottom-8 lg:-right-8 bg-white p-6 rounded-2xl shadow-xl z-20 max-w-xs">
                  <p className="font-bold text-slate-800 text-lg">98%</p>
                  <p className="text-slate-500 text-sm">Clientes Satisfeitos</p>
                </div>
@@ -36,7 +36,7 @@ const Testimonials: React.FC = () => {
           </div>
 
           {/* Right: Content */}
-          <div className="flex-1 w-full">
+          <div className="flex-1 w-full order-1 lg:order-2">
             <motion.div
                initial={{ opacity: 0, x: 50 }}
                whileInView={{ opacity: 1, x: 0 }}
@@ -44,7 +44,7 @@ const Testimonials: React.FC = () => {
             >
                <Quote className="w-12 h-12 text-primary/30 mb-8" />
                
-               <div className="h-64 relative">
+               <div className="min-h-[280px] sm:min-h-[250px] relative">
                  <AnimatePresence mode="wait">
                    <motion.div
                      key={currentIndex}
@@ -54,7 +54,7 @@ const Testimonials: React.FC = () => {
                      transition={{ duration: 0.5 }}
                      className="absolute inset-0"
                    >
-                     <p className="text-2xl md:text-4xl font-light text-slate-700 leading-tight mb-8">
+                     <p className="text-xl md:text-3xl lg:text-4xl font-light text-slate-700 leading-tight mb-8">
                        "{TESTIMONIALS[currentIndex].content}"
                      </p>
                      
@@ -73,7 +73,7 @@ const Testimonials: React.FC = () => {
                  </AnimatePresence>
                </div>
 
-               <div className="flex gap-4 mt-8">
+               <div className="flex gap-4 mt-4 lg:mt-8">
                  <button onClick={prev} className="p-3 rounded-full border border-slate-200 hover:bg-slate-100 transition-colors">
                    <ChevronLeft className="w-6 h-6 text-slate-600" />
                  </button>

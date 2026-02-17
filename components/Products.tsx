@@ -58,7 +58,7 @@ const ProductCard: React.FC<{ product: Product; index: number }> = ({ product, i
 
 const Products: React.FC = () => {
   return (
-    <section className="py-32 bg-slate-900 relative overflow-hidden rounded-t-[4rem] -mt-10 z-20">
+    <section className="py-20 lg:py-32 bg-slate-900 relative overflow-hidden rounded-t-[3rem] lg:rounded-t-[4rem] -mt-10 z-20">
       {/* Decorative */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
 
@@ -68,7 +68,7 @@ const Products: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-16 lg:mb-20"
         >
           <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Shopify Editions Style</span>
           <h2 className="text-4xl md:text-6xl font-black text-white mb-6">
@@ -88,7 +88,7 @@ const Products: React.FC = () => {
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          className="mt-20 text-center"
+          className="mt-16 lg:mt-20 text-center"
         >
           <button className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 text-white rounded-full font-bold hover:bg-white/20 transition-all border border-white/20 backdrop-blur-md">
             Ver Coleção Completa

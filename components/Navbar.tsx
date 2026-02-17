@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { ShoppingBag, Menu, PawPrint } from 'lucide-react';
 import { useCart } from '../context/CartContext';
@@ -28,13 +28,9 @@ const Navbar: React.FC = () => {
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.35, ease: "easeInOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'py-3' : 'py-6'
+        scrolled ? 'py-3 bg-white/70 backdrop-blur-md shadow-sm border-b border-white/40' : 'py-4 lg:py-6 bg-transparent'
       }`}
     >
-      <div className={`absolute inset-0 transition-opacity duration-300 ${
-        scrolled ? 'bg-white/70 backdrop-blur-md shadow-sm border-b border-white/40' : 'bg-transparent'
-      }`} />
-      
       <div className="container mx-auto px-6 relative flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2 cursor-pointer group">
