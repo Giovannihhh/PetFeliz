@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import { PRODUCTS } from '../constants';
 import { ShoppingBag, Star } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { Product } from '../types';
 
-const ProductCard: React.FC<{ product: Product; index: number }> = ({ product, index }) => {
+const ProductCard = memo(({ product, index }: { product: Product; index: number }) => {
   const { addToCart } = useCart();
 
   return (
@@ -21,6 +21,8 @@ const ProductCard: React.FC<{ product: Product; index: number }> = ({ product, i
         <img 
           src={product.image} 
           alt={product.name} 
+          loading="lazy"
+          decoding="async"
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500" />
@@ -28,6 +30,7 @@ const ProductCard: React.FC<{ product: Product; index: number }> = ({ product, i
         {/* Floating Add Button */}
         <button 
           onClick={() => addToCart(product)}
+          aria-label={`Adicionar ${product.name} ao carrinho`}
           className="absolute bottom-4 right-4 bg-white text-slate-900 p-4 rounded-full shadow-lg translate-y-20 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-slate-900 hover:text-white z-20 flex items-center gap-2"
         >
           <ShoppingBag size={20} />
@@ -54,7 +57,9 @@ const ProductCard: React.FC<{ product: Product; index: number }> = ({ product, i
       </div>
     </motion.div>
   );
-};
+});
+
+ProductCard.displayName = 'ProductCard';
 
 const Products: React.FC = () => {
   return (

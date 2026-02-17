@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { CartProvider } from './context/CartContext';
 import CustomCursor from './components/CustomCursor';
 import Navbar from './components/Navbar';
 import CartSidebar from './components/CartSidebar';
 import Hero from './components/Hero';
-import Services from './components/Services';
-import Products from './components/Products';
-import Testimonials from './components/Testimonials';
-import WhyChooseUs from './components/WhyChooseUs';
-import Footer from './components/Footer';
+
+// Lazy load components that are not immediately visible
+const Services = lazy(() => import('./components/Services'));
+const Products = lazy(() => import('./components/Products'));
+const Testimonials = lazy(() => import('./components/Testimonials'));
+const WhyChooseUs = lazy(() => import('./components/WhyChooseUs'));
+const Footer = lazy(() => import('./components/Footer'));
+
+const LoadingFallback = () => (
+  <div className="w-full py-20 flex justify-center items-center">
+    <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+  </div>
+);
 
 const App: React.FC = () => {
   return (
@@ -18,12 +26,16 @@ const App: React.FC = () => {
         <Navbar />
         <CartSidebar />
         
+        {/* Hero loads immediately for LCP */}
         <Hero />
-        <Services />
-        <Products />
-        <Testimonials />
-        <WhyChooseUs />
-        <Footer />
+        
+        <Suspense fallback={<LoadingFallback />}>
+          <Services />
+          <Products />
+          <Testimonials />
+          <WhyChooseUs />
+          <Footer />
+        </Suspense>
       </main>
     </CartProvider>
   );

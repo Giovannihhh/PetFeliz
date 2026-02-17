@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import { SERVICES } from '../constants';
 import { Service } from '../types';
 
-const ServiceCard: React.FC<{ service: Service; index: number }> = ({ service, index }) => {
+const ServiceCard = memo(({ service, index }: { service: Service; index: number }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -28,7 +28,9 @@ const ServiceCard: React.FC<{ service: Service; index: number }> = ({ service, i
       </div>
     </motion.div>
   );
-};
+});
+
+ServiceCard.displayName = 'ServiceCard';
 
 const Services: React.FC = () => {
   return (
